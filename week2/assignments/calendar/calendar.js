@@ -5,13 +5,16 @@ const month = ["January","February","March","April","May","June","July","August"
 var selectBox = document.querySelector("#month");
 var selectYear = document.querySelector("#year");
 var goButton = document.querySelector("#goButton");
-selectBox.addEventListener("click",function(){
+selectBox.value = month[0]
+selectYear.value = new Date().getFullYear();
+window.addEventListener("load",function(){
     if (selectBox.childElementCount<12){
         for(i=0;i<month.length;i++){
             var selectMonth = document.createElement("option");
             selectMonth.textContent = month[i];
             selectMonth.setAttribute("value", month[i]);
             selectBox.appendChild(selectMonth);
+            printCalendar();
         }  
     }
 });
@@ -34,7 +37,9 @@ function printCalendar(){
         default:
             days = 31
     }
-        
+    
+    document.getElementById('calendarDays').innerHTML = "" 
+   
     let x
     const weekday = today.getDay()
     for (x = 0; x < weekday; x++){
@@ -46,10 +51,6 @@ function printCalendar(){
         dt++
         document.getElementById('calendarDays').innerHTML += `<div class='calendarCell'>${dt}</div`
     } while ( dt < days)
-
-    const monthName = today.toLocaleDateString('default', {month:'long'})
-    const year = today.getFullYear()
-    document.querySelector('.calendarTitle').innerText = `${monthName} ${year}`
 
     const remainder = (7 - ((x + dt) % 7))
     let y = 0
