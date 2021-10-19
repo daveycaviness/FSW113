@@ -7,6 +7,8 @@
   use the CSS grid to display all five <div> elements contained within
   the 'queryWrapper' <div> on a row next to each other 
   */
+  display: flex;
+  gap: 5px;
   margin: 0 auto;
 }
 
@@ -19,6 +21,8 @@
   use the CSS grid to display the <div> elements contained within
   the 'dataWrapper' <div> in a 2 x 2 grid 
   */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   margin: 0 auto;
 }
 
